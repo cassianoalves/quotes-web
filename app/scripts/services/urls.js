@@ -14,7 +14,7 @@ angular.module('quotesWebApp')
         return 'http://www.thequotes.com/rss/' + (quoteName ? quoteName : '<quoute-name>');
       },
       getApiBaseUrl: function() {
-        return ENV.apiBaseURL
+        return ENV.apiBaseURL;
       }
     };
     // AngularJS will instantiate a singleton by calling "new" on this function
