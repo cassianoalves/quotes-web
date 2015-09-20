@@ -18,19 +18,23 @@ angular.module('quotesWebApp')
     $scope.signUp = function() {
       console.log('signup', $scope.quoteName);
 
-      $scope.sent=true;
-
-      User.save({
+      var newUser = new User({
         email: $scope.email,
         password: $scope.password,
         passwordConfirm: $scope.passwordConfirm,
         quoteName: $scope.quoteName
-      }, function() {
-        $scope.sent=true;
-      }, function () {
-        $location.path('error');
       });
 
-    }
+      newUser.$save(
+        function() {
+          $scope.sent=true;
+        },
+        function (r) {
+          console.log('Error', r);
+          $location.path('error');
+        }
+      );
+
+    };
 
   });

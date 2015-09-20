@@ -3,7 +3,7 @@
     <h1>The Quotes</h1>
   </div>
 
-  <form class="form-horizontal center-block" ng-if="!sent" style="width: 50%; margin-top: 20%">
+  <form class="form-horizontal center-block" ng-show="!sent" style="width: 50%; margin-top: 20%">
     <div class="form-group">
       <label for="inputEmail" class="col-sm-4 control-label">Email</label>
       <div class="col-sm-8">
@@ -39,7 +39,7 @@
     </div>
   </form>
 
-  <div class="center-block" ng-if="sent">
+  <div class="center-block" ng-show="sent">
     You will receive an email with confirmation link. Welcome!
   </div>
 </div>

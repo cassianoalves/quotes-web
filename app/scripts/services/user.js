@@ -9,5 +9,6 @@
  */
 angular.module('quotesWebApp')
   .service('User', function ($resource, Urls) {
-    return $resource(Urls.getApiBaseUrl() + '/user/:id');
+    return $resource(Urls.getApiBaseUrl() + '/user/:id',
+      { id: '@id'},{});
   });

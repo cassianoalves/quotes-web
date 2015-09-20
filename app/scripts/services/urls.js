@@ -14,7 +14,14 @@ angular.module('quotesWebApp')
         return 'http://www.thequotes.com/rss/' + (quoteName ? quoteName : '<quoute-name>');
       },
       getApiBaseUrl: function() {
-        return 'http:localhost:8080';
+        // No Heroku precisa configurar o ambiente com o comando:
+        // heroku config:set API_BASE_URL="<url base da API>"
+        var envBaseUrl = process.env.API_BASE_URL;
+        if(envBaseUrl) {
+          return envBaseUrl;
+        }
+        return 'http://localhost:8080';
+        //return '';
       }
     };
     // AngularJS will instantiate a singleton by calling "new" on this function
