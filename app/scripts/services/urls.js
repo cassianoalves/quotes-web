@@ -14,9 +14,7 @@ angular.module('quotesWebApp')
         return 'http://www.thequotes.com/rss/' + (quoteName ? quoteName : '<quoute-name>');
       },
       getApiBaseUrl: function() {
-        // No Heroku precisa configurar o ambiente com o comando:
-        // heroku config:set API_BASE_URL="<url base da API>"
-        var envBaseUrl = process.env.API_BASE_URL;
+        var envBaseUrl = '';
         if(envBaseUrl) {
           return envBaseUrl;
         }
