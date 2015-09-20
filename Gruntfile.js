@@ -16,7 +16,8 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    ngconstant: 'grunt-ng-constant'
   });
 
   // Configurable paths for the application
@@ -405,6 +406,23 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+    ngconstant: {
+      options: {
+        space: '  ',
+        wrap: '"use strict";\n\n {%= __ngModule %}',
+        name: 'config',
+        dest: '<%= yeoman.app %>/scripts/config.js'
+      },
+      default: {
+        constants: {
+          ENV: {
+            // Setar ambiente Heroku com URL da API:
+            //   heroku config:set API_BASE_URL=<url base>
+            apiBaseURL: process.env.API_BASE_URL ? process.env.API_BASE_URL : 'http://localhost:8080'
+          }
+        }
+      }
     }
   });
 
@@ -416,6 +434,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant',
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
@@ -440,6 +459,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

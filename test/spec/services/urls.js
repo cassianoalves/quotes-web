@@ -6,13 +6,13 @@ describe('Service: urls', function () {
   beforeEach(module('quotesWebApp'));
 
   // instantiate service
-  var urls;
-  beforeEach(inject(function (_urls_) {
-    urls = _urls_;
+  var Urls;
+  beforeEach(inject(function (_Urls_) {
+    Urls = _Urls_;
   }));
 
   it('should do something', function () {
-    expect(!!urls).toBe(true);
+    expect(!!Urls).toBe(true);
   });
 
 });

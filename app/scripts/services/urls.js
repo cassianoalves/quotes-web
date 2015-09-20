@@ -8,18 +8,13 @@
  * Service in the quotesWebApp.
  */
 angular.module('quotesWebApp')
-  .service('Urls', function () {
+  .service('Urls', function (ENV) {
     return {
       getRssUrl: function (quoteName) {
         return 'http://www.thequotes.com/rss/' + (quoteName ? quoteName : '<quoute-name>');
       },
       getApiBaseUrl: function() {
-        var envBaseUrl = '';
-        if(envBaseUrl) {
-          return envBaseUrl;
-        }
-        return 'http://localhost:8080';
-        //return '';
+        return ENV.apiBaseURL
       }
     };
     // AngularJS will instantiate a singleton by calling "new" on this function
