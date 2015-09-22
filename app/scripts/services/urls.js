@@ -17,5 +17,4 @@ angular.module('quotesWebApp')
         return ENV.apiBaseURL;
       }
     };
-    // AngularJS will instantiate a singleton by calling "new" on this function
   });

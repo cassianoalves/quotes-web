@@ -38,6 +38,16 @@ angular
       .when('/error', {
         templateUrl: 'views/error.html'
       })
+      .when('/quote-list', {
+        templateUrl: 'views/quote-list.html',
+        controller: 'QuoteListCtrl',
+        controllerAs: 'quoteList'
+      })
+      .when('/quote', {
+        templateUrl: 'views/quote.html',
+        controller: 'QuoteCtrl',
+        controllerAs: 'quote'
+      })
       .otherwise({
         redirectTo: '/'
       });
