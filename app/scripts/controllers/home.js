@@ -8,10 +8,14 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('HomeCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('HomeCtrl', function ($scope) {
+    $scope.session = {
+      userId: 123,
+      userName: 'John Smith'
+    };
+
+    $scope.quoteOfTheDay =  {
+      quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      author: 'Anonymous'
+    };
   });

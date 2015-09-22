@@ -38,12 +38,12 @@ angular
       .when('/error', {
         templateUrl: 'views/error.html'
       })
-      .when('/quote-list', {
+      .when('/quote-list/:userId', {
         templateUrl: 'views/quote-list.html',
         controller: 'QuoteListCtrl',
         controllerAs: 'quoteList'
       })
-      .when('/quote', {
+      .when('/quote/:id', {
         templateUrl: 'views/quote.html',
         controller: 'QuoteCtrl',
         controllerAs: 'quote'

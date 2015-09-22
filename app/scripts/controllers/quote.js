@@ -8,7 +8,8 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('QuoteCtrl', function ($scope) {
+  .controller('QuoteCtrl', function ($scope, $routeParams) {
+    console.log('Quote ID', $routeParams.id);
 
     $scope.quoteObj = {
       id: 1,

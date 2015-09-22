@@ -20,6 +20,7 @@ angular.module('quotesWebApp')
 
       var newUser = new User({
         email: $scope.email,
+        name: $scope.name,
         password: $scope.password,
         passwordConfirm: $scope.passwordConfirm,
         quoteName: $scope.quoteName
