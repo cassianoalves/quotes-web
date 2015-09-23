@@ -48,6 +48,11 @@ angular
         controller: 'QuoteCtrl',
         controllerAs: 'quote'
       })
+      .when('/confirm/:key', {
+        templateUrl: 'views/confirm.html',
+        controller: 'ConfirmCtrl',
+        controllerAs: 'confirm'
+      })
       .otherwise({
         redirectTo: '/'
       });

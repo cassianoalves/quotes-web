@@ -1,26 +1,43 @@
-<div class="container">
-  <div class="text-left">
-    <h1>Q</h1>
+<main-header></main-header>
+
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
+        <!--<label for="name">Name</label>-->
+        <!--<input type="text" ng-model="quoteObj.name" id="name" placeholder="Quote Name">-->
+
+          <input type="text" class="form-control" ng-model="q.quote" placeholder="The Quote">
+          <input type="text" class="form-control" ng-model="q.author" placeholder="The Author">
+
+
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-default" ng-click="new()">New</button>
+    </div>
   </div>
 
   <div class="panel panel-default">
     <div class="panel-body">
-      <div class="container">
-        <label for="name">Name</label>
-        <input type="text" ng-model="quoteObj.name" id="name" placeholder="Quote Name">
 
-        <table>
-          <tr ng-repeat="q in quotes track by $index">
-            <td><input type="text" ng-model="q.quote" placeholder="The Quote"></td>
-            <td><input type="text" ng-model="q.author" placeholder="The Author"></td>
-          </tr>
-        </table>
+      <div ng-repeat="q in quotes track by $index">
+        <div class="container ">
+          <div  class="row" style="padding-bottom: 10px">
+            <div class="col-xs-10">
+              <strong>{{ q.quote }}</strong> <br>
+              <em>-- {{ q.author }}</em>
+            </div>
+            <div class="col-xs-2">
+              <button class="btn btn-xs btn-danger" ng-click="deleteQuote(q.id)">
+                <span class="glyphicon glyphicon-trash"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      </div>
-      <div class="panel-footer">
-        <button class="btn btn-default" ng-click="new()">New</button>
-      </div>
+
     </div>
   </div>
 
-</div>

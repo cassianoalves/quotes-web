@@ -16,25 +16,25 @@ angular.module('quotesWebApp')
     });
 
     $scope.signUp = function() {
-      console.log('signup', $scope.quoteName);
+      //console.log('signup', $scope.quoteName);
 
-      var newUser = new User({
-        email: $scope.email,
-        name: $scope.name,
-        password: $scope.password,
-        passwordConfirm: $scope.passwordConfirm,
-        quoteName: $scope.quoteName
-      });
-
-      newUser.$save(
-        function() {
+      //var newUser = new User({
+      //  email: $scope.email,
+      //  name: $scope.name,
+      //  password: $scope.password,
+      //  passwordConfirm: $scope.passwordConfirm,
+      //  quoteName: $scope.quoteName
+      //});
+      //
+      //newUser.$save(
+      //  function() {
           $scope.sent=true;
-        },
-        function (r) {
-          console.log('Error', r);
-          $location.path('error');
-        }
-      );
+      //  },
+      //  function (r) {
+      //    console.log('Error', r);
+      //    $location.path('error');
+      //  }
+      //);
 
     };
 
