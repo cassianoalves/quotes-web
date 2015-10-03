@@ -53,6 +53,11 @@ angular
         controller: 'ConfirmCtrl',
         controllerAs: 'confirm'
       })
+      .when('/subscribe', {
+        templateUrl: 'views/subscribe.html',
+        controller: 'SubscribeCtrl',
+        controllerAs: 'subscribe'
+      })
       .otherwise({
         redirectTo: '/'
       });
