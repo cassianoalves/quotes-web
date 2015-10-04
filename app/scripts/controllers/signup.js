@@ -35,12 +35,10 @@ angular.module('quotesWebApp')
       var newUser = new User({
         email: $scope.email,
         name: $scope.name,
-        password: $scope.password,
-        passwordConfirm: $scope.passwordConfirm,
-        inviteId: $scope.invite.id
+        password: $scope.password
       });
 
-      newUser.$save(
+      newUser.$save({inviteId: $scope.invite.id},
         function() {
           $scope.sent=true;
         },
@@ -52,4 +50,10 @@ angular.module('quotesWebApp')
 
     };
 
+    $scope.validForm = function(){
+      return ($scope.password &&
+        $scope.name &&
+        $scope.email &&
+       ($scope.password === $scope.passwordConfirm));
+    };
   });

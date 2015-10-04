@@ -11,5 +11,7 @@ angular.module('quotesWebApp')
   .controller('ConfirmCtrl', function ($scope, $routeParams) {
     $scope.confirmed = $routeParams.key === 'keyok';
 
+
+
     console.log('controller ConfirmCtrl');
   });
