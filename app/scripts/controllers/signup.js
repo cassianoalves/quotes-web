@@ -36,7 +36,8 @@ angular.module('quotesWebApp')
         email: $scope.email,
         name: $scope.name,
         password: $scope.password,
-        passwordConfirm: $scope.passwordConfirm
+        passwordConfirm: $scope.passwordConfirm,
+        inviteId: $scope.invite.id
       });
 
       newUser.$save(
