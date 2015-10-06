@@ -1,11 +1,15 @@
 <main-header></main-header>
 
-<div class="container" ng-show="confirmed">
+<div class="container" ng-show="confirmed === 'ok'">
   <h3>Confirmado</h3>
   <h4><a href="#/">Comece agora!</a></h4>
 </div>
 
 
-<div class="container" ng-show="!confirmed">
+<div class="container" ng-show="confirmed === 'nok'">
   <h3>Seu link &eacute; inv&aacute;lido.</h3>
+</div>
+
+<div class="container" ng-show="!confirmed">
+  <h3>Validando confirmação...</h3>
 </div>

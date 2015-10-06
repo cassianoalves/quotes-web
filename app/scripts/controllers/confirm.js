@@ -8,9 +8,17 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('ConfirmCtrl', function ($scope, $routeParams) {
-    $scope.confirmed = $routeParams.key === 'keyok';
+  .controller('ConfirmCtrl', function ($scope, $routeParams, User) {
+    //$scope.confirmed = $routeParams.key === 'keyok';
 
+    User.confirm({ confirmKey: $routeParams.key}, null,
+      function() {
+        $scope.confirmed = 'ok';
+      },
+      function() {
+        $scope.confirmed = 'nok';
+      }
+    );
 
 
     console.log('controller ConfirmCtrl');

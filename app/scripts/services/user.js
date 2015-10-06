@@ -10,5 +10,10 @@
 angular.module('quotesWebApp')
   .service('User', function ($resource, Urls) {
     return $resource(Urls.getApiBaseUrl() + '/user/:id',
-      { id: '@id'},{});
+      {
+        id: '@id',
+        confirmKey: '@confirmKey'
+      },{
+        confirm: {url: Urls.getApiBaseUrl() + '/user/confirm/:confirmKey', method: 'POST'}
+      });
   });
