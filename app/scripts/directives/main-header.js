@@ -11,8 +11,9 @@ angular.module('quotesWebApp')
     return {
       templateUrl: 'views/partials/main-header.html',
       restrict: 'E',
-      //link: function postLink(scope, element, attrs) {
-      //  element.text('this is the mainHeader directive');
-      //}
+      link: function postLink(scope, element, attrs) {
+        scope.center=(attrs.center !== undefined);
+        console.log('main-header attrs', scope.center);
+      }
     };
   });
