@@ -23,7 +23,8 @@ angular
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
-        controllerAs: 'home'
+        controllerAs: 'home',
+        requiresAuth: true
       })
       .when('/login', {
         templateUrl: 'views/login.html',
@@ -41,12 +42,14 @@ angular
       .when('/quote-list/:userId', {
         templateUrl: 'views/quote-list.html',
         controller: 'QuoteListCtrl',
-        controllerAs: 'quoteList'
+        controllerAs: 'quoteList',
+        requiresAuth: true
       })
       .when('/quote/:id', {
         templateUrl: 'views/quote.html',
         controller: 'QuoteCtrl',
-        controllerAs: 'quote'
+        controllerAs: 'quote',
+        requiresAuth: true
       })
       .when('/confirm/:key', {
         templateUrl: 'views/confirm.html',
@@ -61,17 +64,30 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .run(function($rootScope, Auth/*, Session*/) {
+      // Verifica a sessão a cada mudanca de pagina
+      $rootScope.$on('$routeChangeSuccess', function(event, next) {
+        console.log('onRouteChange - next', next);
+        if(next.$$route && next.$$route.requiresAuth) {
+          Auth.checkAuth()
+            //.then(function(result) {
+            //Session.save(result.data);
+          //})
+          ;
+        }
+      });
+    });
 // Verifica as respostas das chamadas HTTP. Caso retorne 401, considera "sessao expirada" e direciona para o login
 angular
   .module('quotesWebApp').factory('sessionChecker', function($q, $location) {
     return {
       'responseError': function(rejection) {
-        console.log('sessionChecker');
+        console.log('sessionChecker', rejection.config.url);
         if(rejection.config &&
-          //rejection.config.url.match(/\/api\/login$/) === null &&
-          rejection.status !== undefined && rejection.status === 403){
-          $location.path('/login').search('sessionexpired');
+          rejection.config.url.match(/\/login$/) === null &&
+          rejection.status !== undefined && rejection.status === 401){
+          $location.path('/login').search('');
         }
         return $q.reject(rejection);
       }
@@ -84,10 +100,10 @@ angular
     // Registra interceptor das chamadas http para tratar expiração de sessão
     $httpProvider.interceptors.push('sessionChecker');
     //Todas as chamadas devem ser enviadas com credenciais (Cookie JSESSIONID)
-    //$httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.withCredentials = true;
     //Enable cross domain calls
-    //$httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.useXDomain = true;
     //Remove the header used to identify ajax call  that would prevent CORS from working
-    //delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
   });
 

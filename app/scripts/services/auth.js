@@ -11,15 +11,14 @@ angular.module('quotesWebApp')
   .service('Auth', function ($http, Urls) {
     return {
       // Faz a chamada de login contando receber o cookie JSESSIONID
-      doLogin: function(username, password) {
+      doLogin: function(username, password, rememberMe) {
+        if(!rememberMe) {
+          rememberMe = false; // caso venha undefined
+        }
         return $http({
           method: 'POST',
           url: Urls.getApiBaseUrl() + '/login',
-          //data: $.param({
-          //  username: username,
-          //  password: password
-          //}),
-          data: 'username=' + username + '&password=' + password,
+          data: 'username=' + username + '&password=' + password + '&remember=' + rememberMe,
           headers: {
             'Content-type': 'application/x-www-form-urlencoded'
           }

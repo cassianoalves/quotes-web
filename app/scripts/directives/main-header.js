@@ -13,7 +13,6 @@ angular.module('quotesWebApp')
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
         scope.center=(attrs.center !== undefined);
-        console.log('main-header attrs', scope.center);
       }
     };
   });
