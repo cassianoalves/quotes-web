@@ -37,7 +37,7 @@ angular.module('quotesWebApp')
       checkAuth: function() {
         return $http({
           method: 'GET',
-          url: Urls.getApiBaseUrl() + '/checkauth'
+          url: Urls.getApiBaseUrl() + '/user/logged'
         });
       }
 
