@@ -8,7 +8,7 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('HomeCtrl', function ($scope, Invite, $timeout) {
+  .controller('HomeCtrl', function ($scope, Invite, $timeout, ErrorMessage) {
     $scope.session = {
       userId: 123,
       userName: 'John Smith'
@@ -19,8 +19,8 @@ angular.module('quotesWebApp')
       author: 'Anonymous'
     };
 
-    function blink(scopeVar) {
-      $scope[scopeVar] = true;
+    function blink(scopeVar, message) {
+      $scope[scopeVar] = message;
       $timeout(function () {
         $scope[scopeVar] = false;
       }, 3000);
@@ -35,11 +35,14 @@ angular.module('quotesWebApp')
         function(){
           $scope.sendingInvite = false;
           $scope.inviteEmail = null;
-          blink('sentAlert');
+          blink('sentAlert', 'Enviado');
         },
         function(resp) {
           console.log('Error sending invite', resp);
           $scope.sendingInvite = false;
+          if(resp.data && resp.data.code) {
+              blink('errorAlert', ErrorMessage.getByCode(resp.data.code));
+          }
         }
       );
     };

@@ -12,6 +12,7 @@
     <div class="row">
       <div class="col-xs-6">Convide um amigo</div>
       <div ng-show="sentAlert" class="col-xs-6 text-right text-success">Enviado <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+      <div ng-show="errorAlert" class="col-xs-6 text-right text-danger">{{ errorAlert }} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
     </div>
   </div>
 
@@ -22,7 +23,7 @@
           <input type="email" class="form-control" ng-model="inviteEmail" placeholder="E-mail do amigo">
         </div>
         <div class="col-xs-3">
-          <button class="btn" style="background-color: black; color: white" ng-click="sendInvite()">Envia</button>
+          <button class="btn" style="background-color: black; color: white" ng-disabled="!inviteEmail || sendingInvite" ng-click="sendInvite()">{{ sendingInvite ? 'Enviando' : 'Envia' }}</button>
         </div>
       </div>
     </div>
