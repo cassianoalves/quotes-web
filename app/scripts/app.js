@@ -65,15 +65,15 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function($rootScope, Auth/*, Session*/) {
+  .run(function($rootScope, Auth, Session) {
       // Verifica a sessão a cada mudanca de pagina
       $rootScope.$on('$routeChangeSuccess', function(event, next) {
         console.log('onRouteChange - next', next);
         if(next.$$route && next.$$route.requiresAuth) {
           Auth.checkAuth()
-            //.then(function(result) {
-            //Session.save(result.data);
-          //})
+            .then(function(result) {
+            Session.save(result.data);
+          })
           ;
         }
       });

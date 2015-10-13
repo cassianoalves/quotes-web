@@ -9,10 +9,6 @@
  */
 angular.module('quotesWebApp')
   .controller('HomeCtrl', function ($scope, Invite, $timeout, ErrorMessage) {
-    $scope.session = {
-      userId: 123,
-      userName: 'John Smith'
-    };
 
     $scope.quoteOfTheDay =  {
       quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',

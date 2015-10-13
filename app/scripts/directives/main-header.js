@@ -13,6 +13,9 @@ angular.module('quotesWebApp')
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
         scope.center=(attrs.center !== undefined);
+      },
+      controller: function($scope, Session) {
+        $scope.session = Session.get();
       }
     };
   });
