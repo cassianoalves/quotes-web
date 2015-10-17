@@ -11,6 +11,10 @@ angular.module('quotesWebApp')
   .controller('LoginCtrl', function ($scope, Auth, $routeParams, $location) {
     $scope.params = $routeParams;
 
+    if($scope.params.logout) {
+      Auth.doLogout();
+    }
+
     $scope.go = function() {
       console.log('$scope.rememberMe', $scope.rememberMe);
       Auth.doLogin($scope.username, $scope.password, $scope.rememberMe).then(
