@@ -14,6 +14,7 @@ angular.module('quotesWebApp')
         id: '@id',
         confirmKey: '@confirmKey'
       },{
-        confirm: {url: Urls.getApiBaseUrl() + '/user/confirm/:confirmKey', method: 'POST'}
+        confirm: {url: Urls.getApiBaseUrl() + '/user/confirm/:confirmKey', method: 'POST'},
+        logged: {url: Urls.getApiBaseUrl() + '/user/logged', method: 'GET'}
       });
   });

@@ -4,10 +4,10 @@
 
   <div ng-if="!center" class="pull-right btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{ session.user.name }} <span class="caret"></span>
+      {{ user.name }} <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li><a href="#/signup?edit">Conta</a></li>
+      <li><a href="#/account">Conta</a></li>
       <li role="separator" class="divider"></li>
       <li><a href="#/login?logout">Logout</a></li>
     </ul>

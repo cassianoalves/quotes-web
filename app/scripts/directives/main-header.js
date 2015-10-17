@@ -14,8 +14,10 @@ angular.module('quotesWebApp')
       link: function postLink(scope, element, attrs) {
         scope.center=(attrs.center !== undefined);
       },
-      controller: function($scope, Session) {
-        $scope.session = Session.get();
+      controller: function($scope, User) {
+        if(!$scope.center) {
+          $scope.user = User.logged();
+        }
       }
     };
   });

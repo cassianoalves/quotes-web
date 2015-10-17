@@ -31,15 +31,15 @@ angular.module('quotesWebApp')
           method: 'POST',
           url: Urls.getApiBaseUrl() + '/logout'
         });
-      },
-
-      // Faz a chamada de login contando receber o cookie JSESSIONID
-      checkAuth: function() {
-        return $http({
-          method: 'GET',
-          url: Urls.getApiBaseUrl() + '/user/logged'
-        });
       }
+
+      //// Faz a chamada de login contando receber o cookie JSESSIONID
+      //checkAuth: function() {
+      //  return $http({
+      //    method: 'GET',
+      //    url: Urls.getApiBaseUrl() + '/user/logged'
+      //  });
+      //}
 
     };
   });

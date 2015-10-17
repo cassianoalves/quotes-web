@@ -23,8 +23,8 @@ angular
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl',
-        controllerAs: 'home',
-        requiresAuth: true
+        controllerAs: 'home'
+        //,requiresAuth: true
       })
       .when('/login', {
         templateUrl: 'views/login.html',
@@ -42,14 +42,14 @@ angular
       .when('/quote-list/:userId', {
         templateUrl: 'views/quote-list.html',
         controller: 'QuoteListCtrl',
-        controllerAs: 'quoteList',
-        requiresAuth: true
+        controllerAs: 'quoteList'
+        //,requiresAuth: true
       })
       .when('/quote/:id', {
         templateUrl: 'views/quote.html',
         controller: 'QuoteCtrl',
-        controllerAs: 'quote',
-        requiresAuth: true
+        controllerAs: 'quote'
+        //,requiresAuth: true
       })
       .when('/confirm/:key', {
         templateUrl: 'views/confirm.html',
@@ -61,23 +61,28 @@ angular
         controller: 'SubscribeCtrl',
         controllerAs: 'subscribe'
       })
+      .when('/account', {
+        templateUrl: 'views/account.html',
+        controller: 'AccountCtrl',
+        controllerAs: 'account'
+        //,requiresAuth: true
+      })
       .otherwise({
         redirectTo: '/'
       });
   })
-  .run(function($rootScope, Auth, Session) {
-      // Verifica a sessão a cada mudanca de pagina
-      $rootScope.$on('$routeChangeSuccess', function(event, next) {
-        console.log('onRouteChange - next', next);
-        if(next.$$route && next.$$route.requiresAuth) {
-          Auth.checkAuth()
-            .then(function(result) {
-            Session.save(result.data);
-          })
-          ;
-        }
-      });
-    });
+  //.run(function($rootScope, Auth, Session) {
+  //    // Verifica a sessão a cada mudanca de pagina
+  //    $rootScope.$on('$routeChangeSuccess', function(event, next) {
+  //      console.log('onRouteChange - next', next);
+  //      if(next.$$route && next.$$route.requiresAuth) {
+  //        Auth.checkAuth().then(function(result) {
+  //          Session.save(result.data);
+  //        });
+  //      }
+  //    });
+  //  })
+;
 // Verifica as respostas das chamadas HTTP. Caso retorne 401, considera "sessao expirada" e direciona para o login
 angular
   .module('quotesWebApp').factory('sessionChecker', function($q, $location) {
