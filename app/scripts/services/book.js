@@ -9,9 +9,9 @@
  */
 angular.module('quotesWebApp')
   .service('Book', function ($resource, Urls) {
-    return $resource(Urls.getApiBaseUrl() + '/book/:bookId/quote/:quoteId',
+    return $resource(Urls.getApiBaseUrl() + '/book/:book/quote/:quote',
     {
-      bookId: '@bookId',
-      quoteId: '@quoteId'
+      book: '@book',
+      quote: '@quote'
     },{});
   });

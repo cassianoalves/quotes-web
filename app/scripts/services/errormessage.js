@@ -22,7 +22,10 @@ angular.module('quotesWebApp')
           103: 'Senha invalida'
         };
 
-        var msg = messages[errorCode];
+        var msg = 'Erro servidor';
+        if(errorCode) {
+          msg = messages[errorCode];
+        }
         return msg ? msg : 'Erro ' + errorCode;
       }
     };
