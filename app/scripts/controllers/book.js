@@ -9,18 +9,6 @@
  */
 angular.module('quotesWebApp')
   .controller('BookCtrl', function ($scope, $routeParams, Book, DivToaster, ErrorMessage) {
-    console.log('Quote ID', $routeParams.id);
-
-    $scope.quotes = [
-      {
-        phrase: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-        author: 'Anonymous'
-      },
-      {
-        phrase: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
-        author: 'Cicero'
-      }
-    ];
 
     function updateQuotes() {
       $scope.quotes = Book.query({ book: $routeParams.id });
@@ -47,6 +35,18 @@ angular.module('quotesWebApp')
 
     $scope.newValid = function () {
       return $scope.newQuote && $scope.newQuote.phrase && $scope.newQuote.author;
+    };
+
+    $scope.deleteQuote = function (id) {
+      Book.delete({ book: $routeParams.id, quote: id },
+        function() {
+          DivToaster.toast('bookQuoteSave', 'success', 'Removido');
+          updateQuotes();
+        },
+        function (resp) {
+          DivToaster.toast('bookQuoteSave', 'error', ErrorMessage.getByCode(resp.data.code));
+          console.error('Error deleting quote', resp);
+        });
     };
 
 
