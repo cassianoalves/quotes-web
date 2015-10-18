@@ -5,14 +5,19 @@
     {{ quoteOfTheDay.quote }}<br>
     -- {{ quoteOfTheDay.author }}
   </div>
+  <div class="panel-heading">
+    <a class="btn" style="background-color: black; color: white" href="#/quote/1">Edite as Quotes</a>
+  </div>
 </div>
+
 
 <div class="panel panel-default" >
   <div class="panel-heading">
     <div class="row">
       <div class="col-xs-6">Convide um amigo</div>
-      <div ng-show="sentAlert" class="col-xs-6 text-right text-success">Enviado <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
-      <div ng-show="errorAlert" class="col-xs-6 text-right text-danger">{{ errorAlert }} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+      <div class="col-xs-6 text-right">
+        <div-toaster id="homeFriendInvite"></div-toaster>
+      </div>
     </div>
   </div>
 
@@ -31,6 +36,3 @@
 
 </div>
 
-<div class="container">
-  <a class="btn" style="background-color: black; color: white" href="#/quote/1">Edite as Quotes</a>
-</div>

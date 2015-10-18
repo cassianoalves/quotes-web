@@ -8,19 +8,12 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('HomeCtrl', function ($scope, Invite, $timeout, ErrorMessage) {
+  .controller('HomeCtrl', function ($scope, Invite, $timeout, ErrorMessage, DivToaster) {
 
     $scope.quoteOfTheDay =  {
       quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       author: 'Anonymous'
     };
-
-    function blink(scopeVar, message) {
-      $scope[scopeVar] = message;
-      $timeout(function () {
-        $scope[scopeVar] = false;
-      }, 3000);
-    }
 
     $scope.sendingInvite = false;
     $scope.sendInvite = function() {
@@ -31,13 +24,13 @@ angular.module('quotesWebApp')
         function(){
           $scope.sendingInvite = false;
           $scope.inviteEmail = null;
-          blink('sentAlert', 'Enviado');
+          DivToaster.toast('homeFriendInvite', 'success', 'Enviado');
         },
         function(resp) {
           console.log('Error sending invite', resp);
           $scope.sendingInvite = false;
           if(resp.data && resp.data.code) {
-              blink('errorAlert', ErrorMessage.getByCode(resp.data.code));
+            DivToaster.toast('homeFriendInvite', 'error', ErrorMessage.getByCode(resp.data.code));
           }
         }
       );
