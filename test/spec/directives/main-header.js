@@ -5,7 +5,8 @@ describe('Directive: mainHeader', function () {
   // load the directive's module
   beforeEach(module('quotesWebApp'));
 
-  var element,
+  var
+    //element,
     scope;
 
   beforeEach(inject(function ($rootScope) {
