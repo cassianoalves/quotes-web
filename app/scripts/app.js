@@ -45,10 +45,10 @@ angular
         controllerAs: 'quoteList'
         //,requiresAuth: true
       })
-      .when('/quote/:id', {
-        templateUrl: 'views/quote.html',
-        controller: 'QuoteCtrl',
-        controllerAs: 'quote'
+      .when('/book/:id', {
+        templateUrl: 'views/book.html',
+        controller: 'BookCtrl',
+        controllerAs: 'book'
         //,requiresAuth: true
       })
       .when('/confirm/:key', {
