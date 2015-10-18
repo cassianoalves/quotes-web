@@ -15,9 +15,13 @@ angular.module('quotesWebApp')
         scope.center=(attrs.center !== undefined);
       },
       controller: function($scope, User) {
-        if(!$scope.center) {
-          $scope.user = User.logged();
-        }
+        var getUserName = function() {
+          if(!$scope.center) {
+            $scope.user = User.logged();
+          }
+        };
+
+        getUserName();
       }
     };
   });

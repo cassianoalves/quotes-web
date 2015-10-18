@@ -8,7 +8,7 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('AccountCtrl', function ($scope, User) {
+  .controller('AccountCtrl', function ($scope, User, DivToaster, ErrorMessage) {
     $scope.user = User.logged();
 
     $scope.validForm = function(){
@@ -21,14 +21,16 @@ angular.module('quotesWebApp')
     };
 
     $scope.update = function() {
-      $scope.senting = true;
+      $scope.sending = true;
       $scope.user.$save(
         function() {
-          $scope.sent = true;
-          $scope.senting = false;
+          $scope.sending = false;
+          DivToaster.toast('accountSubmit', 'success', 'Atualizado');
         },
-        function(data) {
-          console.error('Error updating user', data);
+        function(resp) {
+          DivToaster.toast('accountSubmit', 'error', ErrorMessage.getByCode(resp.data.code));
+          console.error('Error updating user', resp);
+          $scope.sending = false;
         }
       );
     };

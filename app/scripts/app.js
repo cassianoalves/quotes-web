@@ -88,7 +88,7 @@ angular
   .module('quotesWebApp').factory('sessionChecker', function($q, $location) {
     return {
       'responseError': function(rejection) {
-        console.log('sessionChecker', rejection.config.url);
+        console.log('sessionChecker', rejection.config ? rejection.config.url : 'config = null');
         if(rejection.config &&
           rejection.config.url.match(/\/login$/) === null &&
           rejection.status !== undefined && rejection.status === 401){

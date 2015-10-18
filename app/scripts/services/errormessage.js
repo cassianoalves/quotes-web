@@ -18,7 +18,8 @@ angular.module('quotesWebApp')
           2: 'Desculpe, mas no momento estamos abertos apenas para convidados',
           100: 'Convite já enviado',
           101: 'Usuário já existe',
-          102: 'Convite é inválido'
+          102: 'Convite é inválido',
+          103: 'Senha invalida'
         };
 
         var msg = messages[errorCode];
