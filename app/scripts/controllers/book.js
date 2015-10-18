@@ -11,13 +11,6 @@ angular.module('quotesWebApp')
   .controller('BookCtrl', function ($scope, $routeParams, Book, DivToaster, ErrorMessage) {
     console.log('Quote ID', $routeParams.id);
 
-    $scope.quoteObj = {
-      id: 1,
-      name: 'My quote 1',
-      owner: 'me',
-      private: false
-    };
-
     $scope.quotes = [
       {
         phrase: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
@@ -29,12 +22,19 @@ angular.module('quotesWebApp')
       }
     ];
 
+    function updateQuotes() {
+      $scope.quotes = Book.query({ book: $routeParams.id });
+    }
+
+    updateQuotes();
+
     $scope.new = function() {
       Book.save({ book: $routeParams.id },
         $scope.newQuote,
-        function(data) {
+        function() {
           DivToaster.toast('bookQuoteSave', 'success', 'Salvo');
-          $scope.quotes.push(data);
+          updateQuotes();
+          $scope.newQuote = {};
         },
         function (resp) {
           DivToaster.toast('bookQuoteSave', 'error', ErrorMessage.getByCode(resp.data.code));
