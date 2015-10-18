@@ -67,6 +67,11 @@ angular
         controllerAs: 'account'
         //,requiresAuth: true
       })
+      .when('/random/:id', {
+        templateUrl: 'views/random.html',
+        controller: 'RandomCtrl',
+        controllerAs: 'random'
+      })
       .otherwise({
         redirectTo: '/'
       });
