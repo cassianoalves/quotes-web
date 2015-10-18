@@ -7,8 +7,8 @@
         <!--<label for="name">Name</label>-->
         <!--<input type="text" ng-model="quoteObj.name" id="name" placeholder="Quote Name">-->
 
-          <input type="text" class="form-control" ng-model="newQuote.phrase" placeholder="The Quote">
-          <input type="text" class="form-control" ng-model="newQuote.author" placeholder="The Author">
+          <input type="text" class="form-control" ng-model="newQuote.phrase" placeholder="Frase c&eacute;lebre">
+          <input type="text" class="form-control" ng-model="newQuote.author" placeholder="O Autor">
 
 
       </div>
@@ -22,8 +22,14 @@
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-body">
+    <div ng-if="!quotes || quotes.length === 0" class="panel-body">
+      <i>
+        <p>Ainda n&atilde;o h&aacute; quotes!</p>
+        <p>Insira a frase e o autor e clique em "Nova"</p>
+      </i>
+    </div>
 
+    <div ng-if="quotes && quotes.length > 0" class="panel-body">
       <div ng-repeat="q in quotes track by $index">
         <div class="container ">
           <div  class="row" style="padding-bottom: 10px">
