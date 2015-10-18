@@ -13,5 +13,7 @@ angular.module('quotesWebApp')
     {
       book: '@book',
       quote: '@quote'
-    },{});
+    },{
+        getRandomQuote: {url: Urls.getApiBaseUrl() + '/book/:book/quote/random', method: 'GET'}
+      });
   });

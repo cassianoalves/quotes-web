@@ -8,12 +8,9 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('HomeCtrl', function ($scope, Invite, $timeout, ErrorMessage, DivToaster) {
+  .controller('HomeCtrl', function ($scope, Invite, $timeout, ErrorMessage, DivToaster, Book) {
 
-    $scope.quoteOfTheDay =  {
-      quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      author: 'Anonymous'
-    };
+    $scope.randomQuote = Book.getRandomQuote({ book: 1 });
 
     $scope.sendingInvite = false;
     $scope.sendInvite = function() {
