@@ -27,7 +27,7 @@ angular.module('quotesWebApp')
 
         scope.$on('DivToasterCall', function(event, toast){
           if(attrs.id && toast.id && attrs.id === toast.id) {
-            console.log('Recebeu evento', toast);
+            //console.log('Recebeu evento', toast);
             scope.message = toast.message;
             scope.type = toast.type;
             blink();
