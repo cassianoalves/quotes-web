@@ -33,8 +33,10 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-4 col-sm-8">
-        <button ng-disabled="!validForm()" type="submit" class="btn btn-default" ng-click="signUp()">Atualiza</button>
+        <button ng-disabled="!validForm()" type="submit" class="btn btn-default" ng-click="signUp()">Entrar</button>
       </div>
+      <div-toaster id="signupEnter"></div-toaster>
+
       <div ng-show="sentAlert" class="col-xs-6 text-right text-success">Enviado <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
       <div ng-show="errorAlert" class="col-xs-6 text-right text-danger">{{ errorAlert }} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
 

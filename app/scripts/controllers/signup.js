@@ -8,7 +8,7 @@
  * Controller of the quotesWebApp
  */
 angular.module('quotesWebApp')
-  .controller('SignupCtrl', function ($scope, $location, $routeParams, Urls, Invite, User) {
+  .controller('SignupCtrl', function ($scope, $location, $routeParams, Urls, Invite, User, DivToaster, ErrorMessage) {
 
     $scope.sent = false;
 
@@ -44,7 +44,7 @@ angular.module('quotesWebApp')
         },
         function (r) {
           console.log('Error', r);
-          $location.path('error');
+          DivToaster.toast('signupEnter', 'error', ErrorMessage.getByCode(r.data.code));
         }
       );
 

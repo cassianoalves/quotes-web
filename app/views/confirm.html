@@ -1,4 +1,4 @@
-<main-header></main-header>
+<main-header center></main-header>
 
 <div class="container" ng-show="confirmed === 'ok'">
   <h3>Confirmado</h3>
@@ -7,7 +7,9 @@
 
 
 <div class="container" ng-show="confirmed === 'nok'">
-  <h3>Seu link &eacute; inv&aacute;lido.</h3>
+  <h1>Ooops...</h1>
+  <p>Seu link de confirma&ccedil;&atilde;o est&aacute; inv&aacute;lido ou j&aacute; foi utilizado.</p>
+  <p>Favor verifique seu e-mail. Ou tente <a href="#/">entrar com seu e-mail e senha</a></p>
 </div>
 
 <div class="container" ng-show="!confirmed">
