@@ -10,7 +10,7 @@
 angular.module('quotesWebApp')
   .controller('HomeCtrl', function ($scope, Invite, $timeout, ErrorMessage, DivToaster, Book, Urls) {
     $scope.link = {
-      text: Urls.getApiBaseUrl() + '/book/1/quote/random'
+      text: Urls.getApiBaseUrl().replace('https','http') + '/book/1/quote/random'
     };
 
     $scope.randomQuote = Book.getRandomQuote({ book: 1 });
