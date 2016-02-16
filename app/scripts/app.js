@@ -72,6 +72,11 @@ angular
         controller: 'RandomCtrl',
         controllerAs: 'random'
       })
+      .when('/mailme', {
+        templateUrl: 'views/mailme.html',
+        controller: 'MailmeCtrl',
+        controllerAs: 'MailMe'
+      })
       .otherwise({
         redirectTo: '/'
       });
