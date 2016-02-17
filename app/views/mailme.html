@@ -25,11 +25,23 @@
   </div>
 
   <div class="form-group">
-    <div class="text-right col-sm-12">
-      <button type="submit" class="btn btn-default" ng-click="send()">Enviar</button>
+    <!--Layouts diferentes para mobile e outros-->
+    <div class="hidden-xs">
+      <div class="text-left col-sm-10">
+        <div-toaster id="messageSubmit"></div-toaster>
+      </div>
+      <div class="text-right col-sm-2">
+        <button ng-disabled="!validForm() || sending" type="submit" class="btn btn-default" ng-click="send()">{{ sending ? 'Enviando' : 'Enviar' }}</button>
+      </div>
+    </div>
+    <div class="visible-xs-block">
+      <div class="text-right col-sm-12">
+        <button ng-disabled="!validForm() || sending" type="submit" class="btn btn-default" ng-click="send()">{{ sending ? 'Enviando' : 'Enviar' }}</button>
+      </div>
+      <div class="text-center col-sm-12">
+        <div-toaster id="messageSubmit"></div-toaster>
+      </div>
     </div>
   </div>
-
-  <div>{{ contactMessage }}</div>
 
 </form>
