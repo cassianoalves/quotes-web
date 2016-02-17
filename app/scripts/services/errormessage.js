@@ -19,7 +19,8 @@ angular.module('quotesWebApp')
           100: 'Convite já enviado',
           101: 'Usuário já existe',
           102: 'Convite é inválido',
-          103: 'Senha invalida'
+          103: 'Senha invalida',
+          201: 'Por favor, informe seu e-mail'
         };
 
         var msg = 'Erro servidor';
