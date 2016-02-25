@@ -35,4 +35,26 @@ angular.module('quotesWebApp')
         }
       );
     };
+
+    $scope.new = function() {
+      Book.save({ book: 1 }, // TODO: usar bookId de um select quando houver a funcionalidade
+        $scope.newQuote,
+        function() {
+          DivToaster.toast('homeQuoteSave', 'success', 'Salvo');
+          $scope.newQuote = {};
+        },
+        function (resp) {
+          DivToaster.toast('homeQuoteSave', 'error', ErrorMessage.getByCode(resp.data.code));
+          console.error('Error creating quote', resp);
+        }
+      );
+
+
+    };
+
+    $scope.newValid = function () {
+      return $scope.newQuote && $scope.newQuote.phrase && $scope.newQuote.author;
+    };
+
+
   });

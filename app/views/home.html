@@ -1,11 +1,38 @@
 <main-header></main-header>
 
 <div class="panel panel-default" >
+  <div class="panel-heading">Nova Quote</div>
+  <div class="panel-body">
+    <div class="form-group">
+      <!--TODO: Colocar nova quote como diretiva?-->
+      <!--<label for="name">Name</label>-->
+      <!--<input type="text" ng-model="quoteObj.name" id="name" placeholder="Quote Name">-->
+
+      <input type="text" class="form-control" ng-model="newQuote.phrase" placeholder="Frase c&eacute;lebre">
+      <input type="text" class="form-control" ng-model="newQuote.author" placeholder="O Autor">
+
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <div class="pull-left">
+      <div-toaster id="homeQuoteSave"></div-toaster>
+    </div>
+    <div class="text-right">
+      <button ng-disabled="!newValid()" class="btn btn-default" ng-click="new()">Nova</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="panel panel-default" >
   <div class="panel-body">
     &#8220;&nbsp;{{ randomQuote.phrase }}&nbsp;&#8222;<br>
     -- {{ randomQuote.author }}
   </div>
-  <div class="panel-heading">
+  <div class="panel-footer text-right">
     <a class="btn" style="background-color: black; color: white" href="#/book/1">Edite as Quotes</a>
   </div>
 </div>
